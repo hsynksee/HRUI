@@ -1,0 +1,24 @@
+<div class="col-xl-4 mb-5" *ngIf="userData && userData.length > 0">
+  <div class="card card-xl-stretch mb-xl-8">
+    <div class="card-header border-0">
+      <h3 class="card-title fw-bold text-gray-900">Yaklaşan Doğum Günleri</h3>
+    </div>
+    <div class="card-body pt-2">
+      <div *ngFor="let item of userData;" class="d-flex align-items-center mb-7">
+        <div class="symbol symbol-50px me-3">
+          <img src="{{ item.profilPicture }}" alt="Profil Picture" class="img-fluid resized-img">
+        </div>
+        <div class="flex-grow-1">
+          <a href="/user-edit/{{item.userId}}" class="text-gray-900 fw-bold text-hover-primary fs-6">{{ item.userName }}</a>
+        </div>
+        <div>
+          <span class="text-muted d-block fw-bold">
+            {{ item.dateOfBirth | date:'dd/MM/yyyy' }}
+            <ng-container *ngIf="isToday(item.dateOfBirth)">(Bugün!)</ng-container>
+            <ng-container *ngIf="isTomorrow(item.dateOfBirth)">(Yarın!)</ng-container>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<mat-accordion>
+  <mat-expansion-panel (opened)="true" (closed)="false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <h4 class="d-flex align-items-center m-0 text-dark">Şirket </h4>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="row pt-5">
+      <app-company></app-company>
+    </div>
+  </mat-expansion-panel>
+  <br>
+  <mat-expansion-panel (opened)="true" (closed)="false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <h4 class="d-flex align-items-center m-0 text-dark">Şube </h4>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="row pt-5">
+      <app-branch-office></app-branch-office>
+    </div>
+  </mat-expansion-panel>
+  <br>
+  <mat-expansion-panel (opened)="true" (closed)="false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <h4 class="d-flex align-items-center m-0 text-dark">Departman </h4>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="row pt-5">
+      <app-department></app-department>
+    </div>
+  </mat-expansion-panel>
+  <br>
+  <mat-expansion-panel (opened)="true" (closed)="false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <h4 class="d-flex align-items-center m-0 text-dark">Ünvan </h4>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="row pt-5">
+      <app-job-title></app-job-title>
+    </div>
+  </mat-expansion-panel>
+  
+</mat-accordion>
+

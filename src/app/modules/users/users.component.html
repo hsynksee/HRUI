@@ -1,0 +1,67 @@
+<div class="card mb-5 mb-xl-10" id="kt_profile_details_view">
+  <div class="card-header cursor-pointer">
+    <div class="card-title m-0">
+      <h3 class="fw-bolder m-0">Çalışan Listesi</h3>
+    </div>
+    <a (click)="routeToCreateUser()" class="btn btn-sm btn-danger align-self-center">
+      Yeni Çalışan Ekle
+    </a>
+  </div>
+  <div class="card-body p-2">
+    <dx-data-grid id="gridContainer" [dataSource]="dataSource" [columnAutoWidth]="true" [showRowLines]="false"
+      [showColumnLines]="false" [showBorders]="false">
+
+      <dxo-paging [pageSize]="25"></dxo-paging>
+      <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[25, 50, 100]"></dxo-pager>
+      <dxo-filter-panel [visible]="false"></dxo-filter-panel>
+      <dxo-filter-row [visible]="false"></dxo-filter-row>
+      <dxo-header-filter [visible]="false"></dxo-header-filter>
+      <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+      <dxo-group-panel [visible]="false"></dxo-group-panel>
+
+      <dxo-editing mode="row" [allowUpdating]="true" [allowDeleting]="true" [useIcons]="true">
+        <dxo-texts confirmDeleteMessage="Seçili Kullanıcıyı Pasife Almak İstediğinize Eminmisiniz?"></dxo-texts>
+      </dxo-editing>
+      <dxi-column dataField="combinedColumn" caption="Çalışanlar" [allowFiltering]="false" [allowSorting]="false"
+      cellTemplate="combinedCellTemplate"></dxi-column>
+
+    <div *dxTemplate="let data of 'combinedCellTemplate'">
+      <div style="display: flex; align-items: center; width: 350px;">
+        <img [src]="data.data.profilPicture == null ? './assets/media/avatars/blank.png' : data.data.profilPicture"
+          style="width:50px; height: 50px; border-radius: 8px; margin-right: 10px;" />
+        <div>
+          <span style="margin-bottom: 0.25rem!important; color: #252F4A !important;">{{ data.data.name }} {{data.data.surname}}</span><br>
+          <span style="color: #78829D;">{{ data.data.emailBusiness }}</span>
+        </div>
+      </div>
+    </div>
+      <dxi-column dataField="departmanName" dataType="string" caption="Departman"></dxi-column>
+      <dxi-column dataField="jobTitle" dataType="string" caption="Ünvan"></dxi-column>
+      <dxi-column dataField="phoneBusiness" dataType="string" caption="Telefon(İş)"></dxi-column>
+      <dxi-column dataField="isActive" cellTemplate="cellStateTemplate" dataType="string" caption="Durum"></dxi-column>
+      <dxi-column type="buttons" [width]="110" [fixed]="true" caption="İşlemler"
+        cellTemplate="cellBtnTemplate"></dxi-column>
+
+      <div *dxTemplate="let item of 'cellBtnTemplate'">
+        <a (click)="editUserClick(item)" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+          <span class="svg-icon svg-icon-2" [inlineSVG]="'./assets/media/icons/duotune/general/gen004.svg'"></span>
+        </a>
+        <a (click)="setUserActive(item)" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm"
+          title="Pasif Yap" *ngIf="item.row.data.isActive">
+          <span class="svg-icon svg-icon-2" [inlineSVG]="'./assets/media/icons/duotune/arrows/arr011.svg'"></span>
+        </a>
+        <a (click)="setUserActive(item)" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm"
+          title="Aktif Yap" *ngIf="!item.row.data.isActive">
+          <span class="svg-icon svg-icon-2" [inlineSVG]="'./assets/media/icons/duotune/arrows/arr012.svg'"></span>
+        </a>
+      </div>
+      <div *dxTemplate="let item of 'cellStateTemplate'" id="custom-cell-for-statition" [ngStyle]="{ 'background-color': item.value ? '#dfffea' : '#FFEEF3', 'color': item.value ? 'var(--bs-success)' : 'var(--bs-danger)', 'display': 'inline-block', 'align-items': 'center', 'justify-content': 'center', 'padding': '5px', 'border-radius': '11px' }">
+        <span mat-button color="primary">{{item.value ? "aktif" : "pasif" }}</span>
+      </div>
+      <!-- <div *dxTemplate="let data of 'cellImageTemplate'" style="text-align: center;">
+        <img [src]="data.value == null ? './assets/media/avatars/blank.png' : data.value"
+          style="width:50px; height: 50px; border-radius: 50%;" />
+      </div> -->
+    </dx-data-grid>
+  </div>
+</div>

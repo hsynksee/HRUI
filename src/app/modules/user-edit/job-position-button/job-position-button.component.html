@@ -1,0 +1,9 @@
+<div class="button-container">
+  <button class="btn" (click)="showJobPosition(); toggleButton('jobPosition')" [class.btn-secondary]="!isJobPositionButtonClicked" [class.btn-primary]="isJobPositionButtonClicked">Pozisyon</button>
+  <button class="btn" (click)="showSalary(); toggleButton('salary')" [class.btn-secondary]="!isSalaryButtonClicked" [class.btn-primary]="isSalaryButtonClicked">Maaş</button>
+  <button class="btn" (click)="showWorkSchedules(); toggleButton('workSchedules')" [class.btn-secondary]="!isWorkSchedulesButtonClicked" [class.btn-primary]="isWorkSchedulesButtonClicked">Çalışma Takvimleri</button>
+</div>
+
+<app-job-position *ngIf="isJobPositionVisible" [userId]="userId"></app-job-position>
+<app-salary *ngIf="isSalaryVisible" [userId]="userId"></app-salary>
+<app-working-schedule *ngIf="isWorkSchedulesVisible"></app-working-schedule>

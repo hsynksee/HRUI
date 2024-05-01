@@ -1,0 +1,27 @@
+<div class="row g-5 g-xl-10 mb-xl-10">
+
+  <div class="col-xl-4 mb-5">
+    <app-profile></app-profile>
+  </div>
+
+  <div class="col-xl-4 mb-5" *ngIf="_isUserBirthday">
+    <app-user-birthday (userBirthday)="isUserBirthday($event)"></app-user-birthday>
+  </div>
+
+  <div class="col-xl-4 mb-5" *ngIf="_isDashboardLeave">
+    <app-dashboard-leave (dashboardLeave)="isDashboardLeave($event)"></app-dashboard-leave>
+  </div>
+
+  <div class="col-xl-4 mb-5" *ngIf="_isAwaitingLeaveRequest">
+    <app-awaiting-leave-request (awaitingLeaveRequest)="isAwaitingLeaveRequest($event)"></app-awaiting-leave-request>
+  </div>
+
+  <div class="col-xl-4 mb-5" *ngIf="_isAwaitingPaymentRequest">
+    <app-awaiting-payment-request (awaitingPaymentRequest)="isAwaitingPaymentRequest($event)"></app-awaiting-payment-request>
+  </div>
+
+  <app-user-distribution-chart class="col-xl-4 mb-5"></app-user-distribution-chart>
+
+  <app-leave-information class="col-xl-4 mb-5"></app-leave-information>
+
+</div>

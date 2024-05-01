@@ -1,0 +1,45 @@
+<div class="card card-xl-stretch mb-xl-8">
+  <div class="card-header border-0" style="justify-content: center;">
+    <h3 class="card-title fw-bold text-gray-900">İzin Bilgilerim / Yıllık İzin</h3>
+  </div>
+  <div class="m-b-12">
+    <div class="kolay-progress primary">
+    </div>
+    <div class="d-flex justify-content-between align-items-center m-t-12">
+      <div class="d-flex align-items-center">
+        <div class="ms-5 fs-4 fw-bold">İleri Tarihli : </div>
+        <span class="">
+          {{futureLeave}}
+        </span>
+      </div>
+      <div class="d-flex align-items-center">
+        <div class="fs-4 fw-bold">Kalan : </div>
+        <span class="me-9">
+          {{annualLeave}}
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="leave-information-widget">
+    <div *ngFor="let item of leaveData" class="leave-item">
+      <div class="leave-status">
+        <span class="svg-icon svg-icon-2" ng-reflect-inline-s-v-g="./assets/media/icons/duotune/a">
+          <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="247.000000pt" height="204.000000pt"
+            viewBox="0 0 247.000000 204.000000" preserveAspectRatio="xMidYMid meet">
+
+            <g transform="translate(0.000000,204.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+              <path
+                d="M2015 2014 c-22 -8 -55 -25 -73 -37 -18 -12 -241 -274 -494 -582 -253 -308 -466 -566 -472 -572 -9 -10 -60 31 -226 182 -254 230 -286 250 -405 250 -99 0 -152 -22 -229 -95 -108 -102 -141 -253 -81 -375 28 -59 48 -79 280 -287 83 -74 223 -202 311 -285 188 -175 222 -195 339 -201 100 -5 174 20 239 81 24 23 307 353 627 732 400 475 590 706 606 743 35 76 34 169 -3 252 -35 78 -121 160 -199 189 -66 25 -160 27 -220 5z" />
+            </g>
+          </svg>
+        </span>
+      </div>
+      <div class="leave-type">{{ item.startDate | date:"dd/MM/yyy" }}({{ leaveTypeEnumLabelMapping[item.leaveTypeId] }})
+      </div>
+      <!-- <div class="leave-details">
+          <div class="duration"></div>
+        </div> -->
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,35 @@
+<div class="card mb-5 mb-xl-10" id="kt_profile_details_view">
+  <div class="card-body p-2">
+    <dx-data-grid id="gridContainer" [dataSource]="dataSource" [columnAutoWidth]="true" [showRowLines]="true"
+      [showColumnLines]="true" [showBorders]="true">
+
+      <dxo-paging [pageSize]="25"></dxo-paging>
+      <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[25, 50, 100]"></dxo-pager>
+      <dxo-filter-panel [visible]="false"></dxo-filter-panel>
+      <dxo-filter-row [visible]="false"></dxo-filter-row>
+      <dxo-header-filter [visible]="false"></dxo-header-filter>
+      <dxo-search-panel [visible]="false" [highlightCaseSensitive]="true"></dxo-search-panel>
+      <dxo-group-panel [visible]="true"></dxo-group-panel>
+
+      <dxo-editing mode="row" [allowUpdating]="true" [allowDeleting]="true" [allowAdding]="true" [useIcons]="true">
+        <dxo-texts confirmDeleteMessage="Seçili Satırı Silmek İstediğinize Eminmisiniz?"></dxo-texts>
+      </dxo-editing>
+
+      <dxi-column dataField="companyId" dataType="number" caption="Şirket Adı">
+        <dxo-lookup [dataSource]="companyDataList" valueExpr="id" displayExpr="name"></dxo-lookup>
+      </dxi-column>
+      <dxi-column dataField="name" dataType="string" caption="Şube Adı"></dxi-column>
+
+      <dxi-column type="buttons">
+        <dxi-button name="edit" text="Düzenle" icon="bi bi-pencil-fill"
+          cssClass="btn btn-icon btn-bg-light btn-active-color-primary"></dxi-button>
+        <dxi-button name="delete" text="Sil" icon="bi bi-trash-fill"
+          cssClass="btn btn-icon btn-bg-light btn-active-color-danger"></dxi-button>
+        <dxi-button name="save" text="Kaydet" icon="bi bi-check-circle-fill"
+          cssClass="btn btn-icon btn-bg-light btn-active-color-success"></dxi-button>
+        <dxi-button name="cancel" text="İptal" icon="bi bi-x-circle-fill"
+          cssClass="btn btn-icon btn-bg-light btn-active-color-warning"></dxi-button>
+      </dxi-column>
+    </dx-data-grid>
+  </div>
+</div>
